@@ -10,13 +10,13 @@ export const CountriesBox = ({ countriedata }: Props) => {
   return (
     <Style.CountriesBoxStructure>
       <Style.FlagArea>
-        <img src={countriedata?.flags.svg} alt="" />
+        <img src={countriedata?.flag} alt="" />
       </Style.FlagArea>
       <Style.CountrieBoxInfosArea>
-        <h2>{countriedata?.name.common}</h2>
+        <h2>{countriedata?.name}</h2>
         <DescInfo infodata={countriedata?.population}>Population:</DescInfo>
         <DescInfo infodata={countriedata?.region}>Region:</DescInfo>
-        <DescInfo infodata={countriedata?.capital[0]}>Capital:</DescInfo>
+        <DescInfo infodata={countriedata?.capital}>Capital:</DescInfo>
       </Style.CountrieBoxInfosArea>
     </Style.CountriesBoxStructure>
   );

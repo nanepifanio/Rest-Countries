@@ -13,7 +13,9 @@ export const SearchAndFilterArea = styled.div`
 
 export const CountriesGrid = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 300px));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 290px));
+  gap: 4rem 2.5rem;
   padding: 2.5rem 1.25rem;
+  justify-content: space-between;
+  grid-template-rows: repeat(auto-fit, 390px);
 `;

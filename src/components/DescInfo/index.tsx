@@ -12,7 +12,11 @@ export const DescInfo = ({ children, infodata }: DescInfoProps) => {
   return (
     <Style.DescInfoStructure>
       <span className="desc">{children}</span>
-      <span className="info">{formatPopulationNumber(infodata as number)}</span>
+      <span className="info">
+        {typeof infodata === "number"
+          ? formatPopulationNumber(infodata)
+          : infodata}
+      </span>
     </Style.DescInfoStructure>
   );
 };

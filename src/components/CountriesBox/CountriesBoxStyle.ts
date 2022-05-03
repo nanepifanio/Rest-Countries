@@ -14,7 +14,9 @@ export const CountriesBoxStructure = styled.div`
 
 export const FlagArea = styled.div`
   img {
-    max-width: 18.75rem;
+    width: 290px;
+    height: 180px;
+    object-fit: cover;
     border-radius: 0.3125rem 0.3125rem 0 0;
   }
 `;
@@ -23,7 +25,7 @@ export const CountrieBoxInfosArea = styled.div`
   padding: 1.25rem 0px 2.1875rem 2.1875rem;
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     margin-bottom: 1.25rem;
   }
 `;
