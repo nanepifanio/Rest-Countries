@@ -21,7 +21,7 @@ export const Home = () => {
 
   const allCountries = async (): Promise<void> => {
     const all: CountriesType[] = await api.getAllCountries();
-    setCountrie(all[1]);
+    setCountrie(all.find((count) => count.name.common === "Brazil"));
     console.log(countrie);
   };
 
