@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useReducer } from "react";
 import {
   initialCountryState,
   countriesReducer,
@@ -24,6 +24,21 @@ export const Context = createContext<ContextType>({
   dispatch: () => null,
 });
 
-const mainReducer = (state: InitialStateType, action: countryActions) => ({
-  country: countriesReducer(state),
+const mainReducer = async (
+  state: InitialStateType,
+  action: GeneralReducerAction
+) => ({
+  country: countriesReducer(state.country, action),
 });
+
+type ContextProviderProp = {
+  children: React.ReactNode;
+};
+
+export const ContextProvider = ({ children }: ContextProviderProp) => {
+  const [state, dispatch] = useReducer(mainReducer, initialState);
+
+  return (
+    <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
+  );
+};
