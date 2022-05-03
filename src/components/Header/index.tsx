@@ -1,14 +1,17 @@
-import moonsvg from "../../assets/darkmode.svg";
+//Icons
+import moon_light from "../../assets/darkmode-light.svg";
+import moon_dark from "../../assets/darkmode-dark.svg";
+//Style
 import * as Style from "./HeaderStyle";
 
 export const Header = () => {
   return (
     <Style.HeaderStructure>
-      <p>Where in the world?</p>
-      <div>
-        <Style.DarkMode src={moonsvg} />
+      <h1>Where in the world?</h1>
+      <Style.DarkModeArea>
+        <Style.DarkModeIcon src={moon_light} />
         <p>Dark Mode</p>
-      </div>
+      </Style.DarkModeArea>
     </Style.HeaderStructure>
   );
 };
