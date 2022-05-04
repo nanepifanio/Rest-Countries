@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { CountriesType } from "../types/types";
 import { api } from "../api/api";
+import { randomizeCountries } from "../helpers/randomizeCountries";
 
-export const useAllCountries = (): CountriesType[] => {
+export const useRandomCountries = (): CountriesType[] => {
   const [countries, setCountries] = useState<CountriesType[]>([]);
 
   useEffect(() => {
@@ -11,7 +12,7 @@ export const useAllCountries = (): CountriesType[] => {
 
   const allCountries = async (): Promise<void> => {
     const all: CountriesType[] = await api.getAllCountries();
-    setCountries(all);
+    setCountries(randomizeCountries(all));
   };
 
   return countries;

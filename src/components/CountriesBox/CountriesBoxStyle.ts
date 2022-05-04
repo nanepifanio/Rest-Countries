@@ -22,7 +22,7 @@ export const FlagArea = styled.div`
 `;
 
 export const CountrieBoxInfosArea = styled.div`
-  padding: 1.25rem 0px 2.1875rem 2.1875rem;
+  padding: 1.25rem 1rem 2.1875rem 2.1875rem;
 
   h2 {
     font-size: 1.125rem;

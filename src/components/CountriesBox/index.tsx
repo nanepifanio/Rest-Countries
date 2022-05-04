@@ -16,7 +16,9 @@ export const CountriesBox = ({ countriedata }: Props) => {
         <h2>{countriedata?.name}</h2>
         <DescInfo infodata={countriedata?.population}>Population:</DescInfo>
         <DescInfo infodata={countriedata?.region}>Region:</DescInfo>
-        <DescInfo infodata={countriedata?.capital}>Capital:</DescInfo>
+        <DescInfo infodata={countriedata?.capital ?? "Unknown"}>
+          Capital:
+        </DescInfo>
       </Style.CountrieBoxInfosArea>
     </Style.CountriesBoxStructure>
   );

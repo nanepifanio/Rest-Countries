@@ -3,14 +3,13 @@ import { Filter } from "../../components/Filter";
 import { Search } from "../../components/Search";
 import { CountriesBox } from "../../components/CountriesBox";
 // Personalized Hook
-import { useAllCountries } from "../../hooks/useAllCountries";
-// Helper Function
-import { randomizeCountries } from "../../helpers/randomizeCountries";
+import { useRandomCountries } from "../../hooks/useRandomCountries";
 // Style
 import * as Style from "./HomeStyles";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
-  const countries = useAllCountries();
+  const countries = useRandomCountries();
 
   return (
     <Style.HomeStructure>
@@ -19,8 +18,12 @@ export const Home = () => {
         <Filter />
       </Style.SearchAndFilterArea>
       <Style.CountriesGrid>
-        {randomizeCountries(countries).map((countrie, index) => {
-          return <CountriesBox key={index} countriedata={countrie} />;
+        {countries.map((countrie, index) => {
+          return (
+            <Link to={`/about/${countrie.name.toLowerCase()}`} key={index}>
+              <CountriesBox countriedata={countrie} />
+            </Link>
+          );
         })}
       </Style.CountriesGrid>
     </Style.HomeStructure>

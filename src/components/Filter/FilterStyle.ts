@@ -9,7 +9,6 @@ export const Select = styled.select`
   box-shadow: 0px 0px 0.625rem 0.0625rem rgb(0, 0, 0, 0.05);
   border-radius: 0.3125rem;
   font-weight: 600;
-  color: hsl(0, 0%, 52%);
 
   option {
     font-weight: 600;

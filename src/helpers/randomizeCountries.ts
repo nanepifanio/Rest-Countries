@@ -1,16 +1,5 @@
 import { CountriesType } from "../types/types";
 
-const countriesToFind = [
-  "brazil",
-  "united states of america",
-  "germany",
-  "france",
-  "norway",
-  "canada",
-  "spain",
-  "italy",
-];
-
 const randomize = (countriesLength: number): number =>
   Math.floor(Math.random() * countriesLength);
 
