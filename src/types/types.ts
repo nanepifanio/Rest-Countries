@@ -1,7 +1,13 @@
-export type GeneralReducerAction = {
-  type: string;
-  payload?: {
-    name?: string;
-    region?: string;
-  };
+export type CountriesType = {
+  flag: string;
+  name: string;
+  nativeName: string;
+  population: number;
+  region: string;
+  subregion: string;
+  capital: string;
+  topLevelDomain: string[];
+  currencies: [{ name: string }];
+  languages: [{ name: string }];
+  borders: string[];
 };

@@ -2,26 +2,15 @@
 import { Filter } from "../../components/Filter";
 import { Search } from "../../components/Search";
 import { CountriesBox } from "../../components/CountriesBox";
-// Api
-import { api } from "../../api/api";
-// Types
-import { CountriesType } from "../../types/types";
+// Personalized Hook
+import { useAllCountries } from "../../hooks/useAllCountries";
+// Helper Function
+import { randomizeCountries } from "../../helpers/randomizeCountries";
 // Style
 import * as Style from "./HomeStyles";
-import { useEffect, useState } from "react";
 
 export const Home = () => {
-  const [countrie, setCountrie] = useState<CountriesType[]>([]);
-
-  useEffect(() => {
-    allCountries();
-  }, []);
-
-  const allCountries = async (): Promise<void> => {
-    const all: CountriesType[] = await api.getAllCountries();
-    setCountrie(all);
-    console.log(countrie);
-  };
+  const countries = useAllCountries();
 
   return (
     <Style.HomeStructure>
@@ -30,14 +19,9 @@ export const Home = () => {
         <Filter />
       </Style.SearchAndFilterArea>
       <Style.CountriesGrid>
-        <CountriesBox countriedata={countrie[1]} />
-        <CountriesBox countriedata={countrie[5]} />
-        <CountriesBox countriedata={countrie[18]} />
-        <CountriesBox countriedata={countrie[26]} />
-        <CountriesBox countriedata={countrie[45]} />
-        <CountriesBox countriedata={countrie[82]} />
-        <CountriesBox countriedata={countrie[223]} />
-        <CountriesBox countriedata={countrie[67]} />
+        {randomizeCountries(countries).map((countrie, index) => {
+          return <CountriesBox key={index} countriedata={countrie} />;
+        })}
       </Style.CountriesGrid>
     </Style.HomeStructure>
   );
