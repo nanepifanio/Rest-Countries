@@ -7,6 +7,10 @@ export const SearchArea = styled.div`
   padding: 15px;
   box-shadow: 0px 0px 10px 1px rgb(0, 0, 0, 0.05);
   border-radius: 5px;
+
+  @media (max-width: 31.25rem) {
+    width: 100%;
+  }
 `;
 
 export const SearchIcon = styled.img`
@@ -15,14 +19,18 @@ export const SearchIcon = styled.img`
 `;
 
 export const SearchInput = styled.input`
-  margin-left: 20px;
+  margin-left: 1.25rem;
   border: none;
   padding: 5px;
   outline: none;
-  width: 400px;
+  width: 25rem;
   color: hsl(0, 0%, 70%);
 
   &::placeholder {
     color: hsl(0, 0%, 70%);
+  }
+
+  @media (max-width: 31.25rem) {
+    width: 100%;
   }
 `;

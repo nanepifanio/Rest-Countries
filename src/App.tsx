@@ -1,11 +1,11 @@
 import { Header } from "./components/Header";
-import { HomeRoutes } from "./routes/HomeRoutes";
+import { CountriesRoutes } from "./routes/HomeRoutes";
 
 const App = () => {
   return (
     <>
       <Header />
-      <HomeRoutes />
+      <CountriesRoutes />
     </>
   );
 };
