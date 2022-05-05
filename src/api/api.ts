@@ -13,12 +13,20 @@ export const api = {
       )
     ).data;
   },
+
   searchCountry: async (name: string | undefined): Promise<CountriesType[]> => {
     return (await https.get(`/name/${name}`)).data;
   },
-  filterPerRegion: async (
+
+  filterByRegion: async (
     region: string | undefined
   ): Promise<CountriesType[]> => {
     return (await https.get(`/region/${region}`)).data;
+  },
+
+  filterByAlphacode: async (
+    alphacode: string | undefined
+  ): Promise<CountriesType[]> => {
+    return (await https.get(`/alpha/${alphacode}`)).data;
   },
 };
