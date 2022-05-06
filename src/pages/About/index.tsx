@@ -56,9 +56,10 @@ export const About = () => {
             </Styles.RightInfos>
           </Styles.GeneralInfos>
           <div>
-            <BorderCountries
-              borderCountries={aboutCountrie?.borders as string[]}
-            />
+            {!!aboutCountrie?.borders && (
+              <BorderCountries borderCountries={aboutCountrie.borders} />
+            )}
+            {!aboutCountrie?.borders && <div>No Border Countries</div>}
           </div>
         </div>
       </Styles.AboutCountrieArea>
