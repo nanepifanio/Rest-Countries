@@ -26,7 +26,7 @@ export const api = {
 
   filterByAlphacode: async (
     alphacode: string | undefined
-  ): Promise<CountriesType[]> => {
+  ): Promise<CountriesType> => {
     return (await https.get(`/alpha/${alphacode}`)).data;
   },
 };

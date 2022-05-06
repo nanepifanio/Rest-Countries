@@ -1,32 +1,21 @@
-import { Link, useParams } from "react-router-dom";
-import arrow_light from "../../assets/leftarrow-light.svg";
-import arrow_dark from "../../assets/leftarrow-dark.svg";
-import { CountriesType } from "../../types/types";
-import * as Styles from "./AboutStyles";
+// Components
+import { Link } from "react-router-dom";
 import { DescInfo } from "../../components/DescInfo";
 import { BorderCountries } from "../../components/BorderCountries";
-import { api } from "../../api/api";
-import { useEffect, useState } from "react";
+// icons
+import arrow_light from "../../assets/leftarrow-light.svg";
+import arrow_dark from "../../assets/leftarrow-dark.svg";
+// Style
+import * as Styles from "./AboutStyles";
+// Personalized Hook
+import { useAboutCountrie } from "../../hooks/useAboutCountrie";
 
 export const About = () => {
-  const [aboutCountrie, setAboutCountrie] = useState<CountriesType>();
-  const countrieName = useParams();
-
-  useEffect(() => {
-    getCountrieByName();
-  }, []);
-
-  const getCountrieByName = async (): Promise<void> => {
-    const countrie: CountriesType[] = await api.searchCountry(
-      countrieName.countrie
-    );
-    setAboutCountrie(countrie[0]);
-    console.log(countrie[0].borders);
-  };
+  const aboutCountrie = useAboutCountrie();
 
   return (
     <Styles.AboutStructure>
-      <Link to="/">
+      <Link to="/" className="backBtn">
         <Styles.BackButtonIcon src={arrow_light} />
         Back
       </Link>
@@ -34,10 +23,10 @@ export const About = () => {
         <Styles.LargeFlagArea>
           <img src={aboutCountrie?.flag} alt={`${aboutCountrie?.name} Flag`} />
         </Styles.LargeFlagArea>
-        <Styles.AboutArea>
+        <div>
           <h2>{aboutCountrie?.name}</h2>
           <Styles.GeneralInfos>
-            <Styles.LeftInfos>
+            <div>
               <DescInfo infodata={aboutCountrie?.nativeName}>
                 Native Name:
               </DescInfo>
@@ -49,7 +38,7 @@ export const About = () => {
                 Sub Region:
               </DescInfo>
               <DescInfo infodata={aboutCountrie?.capital}>Capital:</DescInfo>
-            </Styles.LeftInfos>
+            </div>
             <Styles.RightInfos>
               <DescInfo infodata={aboutCountrie?.topLevelDomain}>
                 Top Level Domain:
@@ -66,12 +55,12 @@ export const About = () => {
               </DescInfo>
             </Styles.RightInfos>
           </Styles.GeneralInfos>
-          <Styles.BorderCountriesArea>
+          <div>
             <BorderCountries
               borderCountries={aboutCountrie?.borders as string[]}
             />
-          </Styles.BorderCountriesArea>
-        </Styles.AboutArea>
+          </div>
+        </div>
       </Styles.AboutCountrieArea>
     </Styles.AboutStructure>
   );
