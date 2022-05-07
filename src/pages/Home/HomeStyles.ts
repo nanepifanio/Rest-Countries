@@ -30,7 +30,7 @@ export const CountriesGrid = styled.section`
   gap: 4rem 2.5rem;
   padding: 2.5rem 1.25rem;
   justify-content: space-between;
-  grid-template-rows: repeat(auto-fit, 24.375rem);
+  /* grid-template-rows: repeat(auto-fit, minmax(auto, 24.375rem)); */
 
   @media (max-width: 48rem) {
     grid-template-columns: 18.125rem;

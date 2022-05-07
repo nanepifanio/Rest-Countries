@@ -1,5 +1,5 @@
 import { Header } from "./components/Header";
-import { CountriesRoutes } from "./routes/HomeRoutes";
+import { CountriesRoutes } from "./routes/CountriesRoutes";
 
 const App = () => {
   return (
