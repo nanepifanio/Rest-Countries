@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 type LoadingProps = {
   borderCountries?: boolean;
+  theme: string;
 };
 
 export const LoadingStructure = styled.div<LoadingProps>`
@@ -11,6 +12,7 @@ export const LoadingStructure = styled.div<LoadingProps>`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
 
   ${(props) =>
     props.borderCountries &&

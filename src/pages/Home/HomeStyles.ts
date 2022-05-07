@@ -32,6 +32,11 @@ export const CountriesGrid = styled.section`
   justify-content: space-between;
   /* grid-template-rows: repeat(auto-fit, minmax(auto, 24.375rem)); */
 
+  .notFound {
+    font-weight: 600;
+    text-align: center;
+  }
+
   @media (max-width: 48rem) {
     grid-template-columns: 18.125rem;
     justify-content: center;

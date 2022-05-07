@@ -5,6 +5,7 @@ import { api } from "../../api/api";
 import { clearCountriesName } from "../../helpers/clearCountriesName";
 import { Link } from "react-router-dom";
 import { Loading } from "../Loading";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 type Props = {
   borderCountries: string[];
@@ -12,6 +13,7 @@ type Props = {
 
 export const BorderCountries = ({ borderCountries }: Props) => {
   const [countries, setCountries] = useState<CountriesType[]>([]);
+  const { state } = useThemeContext();
 
   useEffect(() => {
     const timer: number = setTimeout(() => {
@@ -30,14 +32,14 @@ export const BorderCountries = ({ borderCountries }: Props) => {
   };
 
   return (
-    <Styles.BorderCountriesStructure>
+    <Styles.BorderCountriesStructure theme={state.theme.status}>
       <span>Border Countries: </span>
       {!countries.length && <Loading borderCountries />}
       {!!countries.length &&
         countries.map((countrie, index) => {
           return (
             <Link to={`/about/${countrie.name}`} key={index}>
-              {clearCountriesName(countrie.name)}
+              {clearCountriesName(countrie.name as string)}
             </Link>
           );
         })}

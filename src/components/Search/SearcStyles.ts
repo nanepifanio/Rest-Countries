@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const SearchArea = styled.div`
+type SearcStylesProps = {
+  theme: string;
+};
+
+export const SearchArea = styled.div<SearcStylesProps>`
   display: flex;
   align-items: center;
-  background-color: #fff;
-  padding: 15px;
-  box-shadow: 0px 0px 10px 1px rgb(0, 0, 0, 0.05);
-  border-radius: 5px;
+  background-color: ${(props) =>
+    props.theme === "light" ? "#fff" : "hsl(209, 23%, 22%)"};
+  padding: 0.9375rem;
+  box-shadow: 0rem 0px 0.625rem 0.0625rem rgb(0, 0, 0, 0.05);
+  border-radius: 0.3125rem;
 
   @media (max-width: 31.25rem) {
     width: 100%;
@@ -14,20 +19,22 @@ export const SearchArea = styled.div`
 `;
 
 export const SearchIcon = styled.img`
-  max-width: 20px;
+  max-width: 1.25rem;
   cursor: pointer;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled.input<SearcStylesProps>`
   margin-left: 1.25rem;
   border: none;
-  padding: 5px;
+  padding: 0.3125rem;
   outline: none;
   width: 25rem;
-  color: hsl(0, 0%, 70%);
+  background-color: ${(props) =>
+    props.theme === "light" ? "#fff" : "hsl(209, 23%, 22%)"};
+  color: ${(props) => (props.theme === "light" ? "hsl(0, 0%, 70%)" : "#fff")};
 
   &::placeholder {
-    color: hsl(0, 0%, 70%);
+    color: ${(props) => (props.theme === "light" ? "hsl(0, 0%, 70%)" : "#fff")};
   }
 
   @media (max-width: 31.25rem) {

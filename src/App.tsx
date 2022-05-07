@@ -1,12 +1,22 @@
 import { Header } from "./components/Header";
+import { useThemeContext } from "./hooks/useThemeContext";
 import { CountriesRoutes } from "./routes/CountriesRoutes";
 
 const App = () => {
+  const { state } = useThemeContext();
+
   return (
-    <>
+    <div
+      style={{
+        backgroundColor: `${
+          state.theme.status === "light" ? "#fafafa" : "hsl(207, 26%, 17%)"
+        }`,
+        height: "100%",
+      }}
+    >
       <Header />
       <CountriesRoutes />
-    </>
+    </div>
   );
 };
 

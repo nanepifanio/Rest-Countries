@@ -1,9 +1,11 @@
 import { ChangeEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import * as Style from "./FilterStyle";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 export const Filter = () => {
   const [region, setRegion] = useSearchParams();
+  const { state } = useThemeContext();
 
   const handleSelected = ({ target }: ChangeEvent<HTMLSelectElement>): void => {
     if (region.has("search")) region.delete("search");
@@ -12,7 +14,11 @@ export const Filter = () => {
   };
 
   return (
-    <Style.Select name="filter" onChange={handleSelected}>
+    <Style.Select
+      name="filter"
+      onChange={handleSelected}
+      theme={state.theme.status}
+    >
       <option disabled selected style={{ display: "none" }}>
         Filter by Region
       </option>

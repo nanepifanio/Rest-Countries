@@ -1,13 +1,21 @@
 import styled from "styled-components";
 
-export const AboutStructure = styled.section`
+type AboutProps = {
+  theme: string;
+};
+
+export const AboutStructure = styled.section<AboutProps>`
   padding: 2.5rem calc((100% - 90rem) / 2);
   margin: 0 1.25rem;
+
+  color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
 
   .backBtn {
     padding: 0.625rem 0;
     max-width: 8.125rem;
-    background-color: #fff;
+    background-color: ${(props) =>
+      props.theme === "light" ? "#fff" : "hsl(209, 23%, 22%)"};
+    color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +35,7 @@ export const BackButtonIcon = styled.img`
   margin-right: 0.625rem;
 `;
 
-export const AboutCountrieArea = styled.div`
+export const AboutCountrieArea = styled.div<AboutProps>`
   display: grid;
   grid-template-columns: repeat(2, minmax(18.75rem, 31.25rem));
   align-items: center;
@@ -40,7 +48,7 @@ export const AboutCountrieArea = styled.div`
 `;
 
 export const LargeFlagArea = styled.div`
-  height: 400px;
+  height: 25rem;
 
   img {
     width: 100%;

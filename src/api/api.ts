@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CountriesType } from "../types/types";
+import { CountriesType, ErrorType } from "../types/types";
 
 const https = axios.create({
   baseURL: "https://restcountries.com/v2",

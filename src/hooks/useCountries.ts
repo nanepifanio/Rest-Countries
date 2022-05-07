@@ -24,9 +24,9 @@ export const useCountries = (): CountriesType[] => {
         const name: CountriesType[] = await api.searchCountry(
           search.get("search") as string
         );
-        setCountries([...name]);
+        setCountries(name);
       } catch (erro) {
-        setCountries([]);
+        setCountries([{ status: 404 }]);
       }
     } else {
       const all: CountriesType[] = await api.getAllCountries();

@@ -2,14 +2,17 @@ import { DescInfo } from "../DescInfo";
 import * as Style from "./CountriesBoxStyle";
 import { CountriesType } from "../../types/types";
 import { clearCountriesName } from "../../helpers/clearCountriesName";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 type Props = {
   countriedata: CountriesType | undefined;
 };
 
 export const CountriesBox = ({ countriedata }: Props) => {
+  const { state } = useThemeContext();
+
   return (
-    <Style.CountriesBoxStructure>
+    <Style.CountriesBoxStructure theme={state.theme.status}>
       <Style.FlagArea>
         <img src={countriedata?.flag} alt="" />
       </Style.FlagArea>

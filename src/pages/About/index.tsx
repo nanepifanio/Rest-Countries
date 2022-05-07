@@ -12,17 +12,21 @@ import * as Styles from "./AboutStyles";
 import { useAboutCountrie } from "../../hooks/useAboutCountrie";
 // Helpers
 import { clearCountriesName } from "../../helpers/clearCountriesName";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 export const About = () => {
   const aboutCountrie = useAboutCountrie();
+  const { state } = useThemeContext();
 
   return (
     <>
       {!aboutCountrie && <Loading />}
       {!!aboutCountrie && (
-        <Styles.AboutStructure>
+        <Styles.AboutStructure theme={state.theme.status}>
           <Link to="/" className="backBtn">
-            <Styles.BackButtonIcon src={arrow_light} />
+            <Styles.BackButtonIcon
+              src={state.theme.status === "light" ? arrow_light : arrow_dark}
+            />
             Back
           </Link>
           <Styles.AboutCountrieArea>
@@ -33,7 +37,7 @@ export const About = () => {
               />
             </Styles.LargeFlagArea>
             <div>
-              <h2>{clearCountriesName(aboutCountrie?.name)}</h2>
+              <h2>{clearCountriesName(aboutCountrie?.name as string)}</h2>
               <Styles.GeneralInfos>
                 <div>
                   <DescInfo infodata={aboutCountrie?.nativeName}>
@@ -55,12 +59,14 @@ export const About = () => {
                     Top Level Domain:
                   </DescInfo>
                   <DescInfo
-                    infodata={aboutCountrie?.currencies.map((cur) => cur.name)}
+                    infodata={aboutCountrie?.currencies?.map((cur) => cur.name)}
                   >
                     Currencies:
                   </DescInfo>
                   <DescInfo
-                    infodata={aboutCountrie?.languages.map((lang) => lang.name)}
+                    infodata={aboutCountrie?.languages?.map(
+                      (lang) => lang.name
+                    )}
                   >
                     Languages:
                   </DescInfo>

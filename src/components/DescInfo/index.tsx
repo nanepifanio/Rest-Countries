@@ -2,6 +2,7 @@
 import { formatPopulationNumber } from "../../helpers/formatPopulationNumber";
 //Style
 import * as Style from "./DescInfoStyle";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 type DescInfoProps = {
   children: React.ReactNode;
@@ -9,8 +10,10 @@ type DescInfoProps = {
 };
 
 export const DescInfo = ({ children, infodata }: DescInfoProps) => {
+  const { state } = useThemeContext();
+
   return (
-    <Style.DescInfoStructure>
+    <Style.DescInfoStructure theme={state.theme.status}>
       <span className="desc">{children}</span>
       {infodata instanceof Array && (
         <span className="info">{infodata.join(", ")}</span>

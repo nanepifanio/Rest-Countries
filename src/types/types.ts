@@ -1,15 +1,15 @@
 export type CountriesType = {
-  flag: string;
-  name: string;
-  nativeName: string;
-  population: number;
-  region: string;
-  subregion: string;
-  capital: string;
-  topLevelDomain: string[];
-  currencies: [{ name: string }];
-  languages: [{ name: string }];
-  borders: string[];
+  flag?: string;
+  name?: string;
+  nativeName?: string;
+  population?: number;
+  region?: string;
+  subregion?: string;
+  capital?: string;
+  topLevelDomain?: string[];
+  currencies?: [{ name: string }];
+  languages?: [{ name: string }];
+  borders?: string[];
   message?: string;
   status?: number;
 };

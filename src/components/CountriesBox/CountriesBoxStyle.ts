@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-export const CountriesBoxStructure = styled.div`
-  background-color: #fff;
+type CountriesBoxProps = {
+  theme: string;
+};
+
+export const CountriesBoxStructure = styled.div<CountriesBoxProps>`
+  background-color: ${(props) =>
+    props.theme === "light" ? "#fff" : "hsl(209, 23%, 22%)"};
+  color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
   border-radius: 0.3125rem;
   box-shadow: 0rem 0rem 0.625rem 0.0625rem rgb(0, 0, 0, 0.05);
   transition: all ease 0.3s;

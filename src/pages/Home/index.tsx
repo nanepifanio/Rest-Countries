@@ -14,8 +14,8 @@ export const Home = () => {
 
   return (
     <>
-      {!countries.length && <Loading />}
-      {!!countries.length && (
+      {!countries?.length && <Loading />}
+      {!!countries?.length && (
         <Style.HomeStructure>
           <Style.SearchAndFilterArea>
             <Search />
@@ -25,10 +25,12 @@ export const Home = () => {
             {countries.map((countrie, index) => {
               return (
                 <>
-                  {!!countrie.status && <div>{countrie.message}</div>}
-                  {!countrie.status && (
+                  {!!countrie?.status && (
+                    <div className="notFound">Country not found</div>
+                  )}
+                  {!countrie?.status && (
                     <Link
-                      to={`/about/${countrie.name.toLowerCase()}`}
+                      to={`/about/${countrie?.name?.toLowerCase()}`}
                       key={index}
                     >
                       <CountriesBox countriedata={countrie} />

@@ -5,10 +5,12 @@ import lupa_dark from "../../assets/lupa-dark.svg";
 import * as Style from "./SearcStyles";
 import React, { ChangeEvent, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useThemeContext } from "../../hooks/useThemeContext";
 
 export const Search = () => {
   const [countrieName, setCountrieName] = useState<string>("");
   const [search, setSearch] = useSearchParams();
+  const { state } = useThemeContext();
 
   const handleName = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setCountrieName(target.value);
@@ -27,13 +29,17 @@ export const Search = () => {
   };
 
   return (
-    <Style.SearchArea>
-      <Style.SearchIcon src={lupa_light} onClick={handleIconClick} />
+    <Style.SearchArea theme={state.theme.status}>
+      <Style.SearchIcon
+        src={state.theme.status === "light" ? lupa_light : lupa_dark}
+        onClick={handleIconClick}
+      />
       <Style.SearchInput
         placeholder="Search for a country..."
         onChange={handleName}
         onKeyUp={handleKeyUp}
         value={countrieName}
+        theme={state.theme.status}
       />
     </Style.SearchArea>
   );
