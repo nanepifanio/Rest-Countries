@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { useThemeContext } from "./hooks/useThemeContext";
 import { CountriesRoutes } from "./routes/CountriesRoutes";
@@ -27,6 +28,7 @@ const App = () => {
     >
       <Header />
       <CountriesRoutes />
+      <Footer />
     </div>
   );
 };
