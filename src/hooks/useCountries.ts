@@ -11,19 +11,23 @@ export const useCountries = (): CountriesType[] => {
 
   useEffect(() => {
     getCountries();
-  }, [region.get("reg"), search.get("name")]);
+  }, [region.get("region"), search.get("search")]);
 
   const getCountries = async (): Promise<void> => {
-    if (region.get("reg")) {
+    if (region.get("region")) {
       const reg: CountriesType[] = await api.filterByRegion(
-        region.get("reg") as string
+        region.get("region") as string
       );
       setCountries(reg);
-    } else if (search.get("name")) {
-      const name: CountriesType[] = await api.searchCountry(
-        search.get("name") as string
-      );
-      setCountries(name);
+    } else if (search.get("search")) {
+      try {
+        const name: CountriesType[] = await api.searchCountry(
+          search.get("search") as string
+        );
+        setCountries([...name]);
+      } catch (erro) {
+        setCountries([]);
+      }
     } else {
       const all: CountriesType[] = await api.getAllCountries();
       setCountries(randomizeCountries(all));

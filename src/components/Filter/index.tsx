@@ -6,7 +6,8 @@ export const Filter = () => {
   const [region, setRegion] = useSearchParams();
 
   const handleSelected = ({ target }: ChangeEvent<HTMLSelectElement>): void => {
-    region.set("reg", target.options[target.options.selectedIndex].value);
+    if (region.has("search")) region.delete("search");
+    region.set("region", target.options[target.options.selectedIndex].value);
     setRegion(region);
   };
 

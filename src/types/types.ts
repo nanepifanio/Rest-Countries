@@ -10,4 +10,6 @@ export type CountriesType = {
   currencies: [{ name: string }];
   languages: [{ name: string }];
   borders: string[];
+  message?: string;
+  status?: number;
 };

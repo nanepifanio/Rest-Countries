@@ -4,6 +4,7 @@ import * as Styles from "./BorderCountriesStyle";
 import { api } from "../../api/api";
 import { clearCountriesName } from "../../helpers/clearCountriesName";
 import { Link } from "react-router-dom";
+import { Loading } from "../Loading";
 
 type Props = {
   borderCountries: string[];
@@ -31,13 +32,15 @@ export const BorderCountries = ({ borderCountries }: Props) => {
   return (
     <Styles.BorderCountriesStructure>
       <span>Border Countries: </span>
-      {countries.map((countrie, index) => {
-        return (
-          <Link to={`/about/${countrie.name}`} key={index}>
-            {clearCountriesName(countrie.name)}
-          </Link>
-        );
-      })}
+      {!countries.length && <Loading borderCountries />}
+      {!!countries.length &&
+        countries.map((countrie, index) => {
+          return (
+            <Link to={`/about/${countrie.name}`} key={index}>
+              {clearCountriesName(countrie.name)}
+            </Link>
+          );
+        })}
     </Styles.BorderCountriesStructure>
   );
 };

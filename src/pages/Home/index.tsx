@@ -24,9 +24,17 @@ export const Home = () => {
           <Style.CountriesGrid>
             {countries.map((countrie, index) => {
               return (
-                <Link to={`/about/${countrie.name.toLowerCase()}`} key={index}>
-                  <CountriesBox countriedata={countrie} />
-                </Link>
+                <>
+                  {!!countrie.status && <div>{countrie.message}</div>}
+                  {!countrie.status && (
+                    <Link
+                      to={`/about/${countrie.name.toLowerCase()}`}
+                      key={index}
+                    >
+                      <CountriesBox countriedata={countrie} />
+                    </Link>
+                  )}
+                </>
               );
             })}
           </Style.CountriesGrid>

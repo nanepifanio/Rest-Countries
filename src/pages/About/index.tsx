@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { DescInfo } from "../../components/DescInfo";
 import { BorderCountries } from "../../components/BorderCountries";
+import { Loading } from "../../components/Loading";
 // icons
 import arrow_light from "../../assets/leftarrow-light.svg";
 import arrow_dark from "../../assets/leftarrow-dark.svg";
@@ -9,7 +10,8 @@ import arrow_dark from "../../assets/leftarrow-dark.svg";
 import * as Styles from "./AboutStyles";
 // Personalized Hook
 import { useAboutCountrie } from "../../hooks/useAboutCountrie";
-import { Loading } from "../../components/Loading";
+// Helpers
+import { clearCountriesName } from "../../helpers/clearCountriesName";
 
 export const About = () => {
   const aboutCountrie = useAboutCountrie();
@@ -31,7 +33,7 @@ export const About = () => {
               />
             </Styles.LargeFlagArea>
             <div>
-              <h2>{aboutCountrie?.name}</h2>
+              <h2>{clearCountriesName(aboutCountrie?.name)}</h2>
               <Styles.GeneralInfos>
                 <div>
                   <DescInfo infodata={aboutCountrie?.nativeName}>
