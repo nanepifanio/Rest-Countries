@@ -1,7 +1,24 @@
 import styled from "styled-components";
 
-export const HomeStructure = styled.main`
+type HomeStyleProps = {
+  theme: string;
+};
+
+export const HomeStructure = styled.main<HomeStyleProps>`
   padding: 2.5rem calc((100% - 90rem) / 2);
+
+  @media (max-width: 60rem) {
+    height: 100%;
+  }
+
+  .notFound {
+    font-weight: 600;
+    text-align: center;
+    margin-top: 3.125rem;
+    width: 100%;
+    height: 100vh;
+    color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
+  }
 
   @media (max-width: 31.25rem) {
     padding-top: 1.875rem;
@@ -31,11 +48,6 @@ export const CountriesGrid = styled.section`
   padding: 2.5rem 1.25rem;
   justify-content: space-between;
   /* grid-template-rows: repeat(auto-fit, minmax(auto, 24.375rem)); */
-
-  .notFound {
-    font-weight: 600;
-    text-align: center;
-  }
 
   @media (max-width: 48rem) {
     grid-template-columns: 18.125rem;

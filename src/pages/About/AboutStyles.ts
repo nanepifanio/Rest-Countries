@@ -7,6 +7,11 @@ type AboutProps = {
 export const AboutStructure = styled.section<AboutProps>`
   padding: 2.5rem calc((100% - 90rem) / 2);
   margin: 0 1.25rem;
+  height: 100vh;
+
+  @media (max-width: 60rem) {
+    height: 100%;
+  }
 
   color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
 

@@ -1,9 +1,20 @@
+import { useEffect } from "react";
 import { Header } from "./components/Header";
 import { useThemeContext } from "./hooks/useThemeContext";
 import { CountriesRoutes } from "./routes/CountriesRoutes";
 
 const App = () => {
-  const { state } = useThemeContext();
+  const { state, dispatch } = useThemeContext();
+
+  useEffect(() => {
+    getTheme();
+  }, []);
+
+  const getTheme = () =>
+    dispatch({
+      type: "CHANGE_THEME",
+      payload: { status: Object.values(localStorage)[0] },
+    });
 
   return (
     <div
