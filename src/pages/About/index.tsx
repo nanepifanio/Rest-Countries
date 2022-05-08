@@ -1,5 +1,5 @@
 // Components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DescInfo } from "../../components/DescInfo";
 import { BorderCountries } from "../../components/BorderCountries";
 import { Loading } from "../../components/Loading";
@@ -17,18 +17,26 @@ import { useThemeContext } from "../../hooks/useThemeContext";
 export const About = () => {
   const aboutCountrie = useAboutCountrie();
   const { state } = useThemeContext();
+  const navigate = useNavigate();
+
+  const handleBack = () => navigate(-1);
 
   return (
     <>
       {!aboutCountrie && <Loading />}
       {!!aboutCountrie && (
         <Styles.AboutStructure theme={state.theme.status}>
-          <Link to="/" className="backBtn">
-            <Styles.BackButtonIcon
-              src={state.theme.status === "light" ? arrow_light : arrow_dark}
-            />
-            Back
-          </Link>
+          <div className="btnArea">
+            <Link to="" className="backBtn" onClick={handleBack}>
+              <Styles.BackButtonIcon
+                src={state.theme.status === "light" ? arrow_light : arrow_dark}
+              />
+              Back
+            </Link>
+            <Link to="/" className="backBtn">
+              Home
+            </Link>
+          </div>
           <Styles.AboutCountrieArea>
             <Styles.LargeFlagArea>
               <img

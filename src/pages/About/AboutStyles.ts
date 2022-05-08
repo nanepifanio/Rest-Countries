@@ -15,6 +15,12 @@ export const AboutStructure = styled.section<AboutProps>`
 
   color: ${(props) => (props.theme === "light" ? "#000" : "#fff")};
 
+  .btnArea {
+    display: flex;
+    max-width: 18.75rem;
+    justify-content: space-between;
+  }
+
   .backBtn {
     padding: 0.625rem 0;
     max-width: 8.125rem;
@@ -28,6 +34,7 @@ export const AboutStructure = styled.section<AboutProps>`
     box-shadow: 0rem 0rem 0.4rem 0rem rgb(0, 0, 0, 0.3);
     margin-bottom: 2.5rem;
     transition: all ease 0.3s;
+    flex: 1;
 
     &:hover {
       opacity: 0.4;
